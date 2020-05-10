@@ -9,6 +9,12 @@ exports.createPages = async ({ actions, graphql }) => {
             uri
           }
         }
+        posts {
+          nodes {
+            id
+            uri
+          }
+        }
       }
     }
   `);
@@ -23,6 +29,20 @@ exports.createPages = async ({ actions, graphql }) => {
       component: require.resolve('./src/templates/page-template.js'),
       context: {
         id: page.id,
+      },
+    });
+  });
+
+  // pull the post data out of the query response
+  const posts = result.data.wpgraphql.posts.nodes;
+
+  // loop through WordPress posts and create a Gatsby post for each one
+  posts.forEach((post) => {
+    actions.createPage({
+      path: `blog${post.uri}`,
+      component: require.resolve('./src/templates/post-template.js'),
+      context: {
+        id: post.id,
       },
     });
   });
