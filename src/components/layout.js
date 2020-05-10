@@ -1,6 +1,8 @@
 import React from 'react';
 import Link from './link';
 
+import '@wordpress/block-library/build-style/style.css';
+
 const Layout = ({ children }) => {
   return (
     <>

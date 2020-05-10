@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "latest",
     "@material-ui/styles": "latest",
+    "@wordpress/block-library": "^2.17.0",
     "gatsby": "latest",
     "gatsby-plugin-material-ui": "latest",
     "gatsby-plugin-react-helmet": "latest",
